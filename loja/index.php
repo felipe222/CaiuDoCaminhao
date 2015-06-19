@@ -26,6 +26,9 @@
                 height: 200px;
                 background: #999999;
             }
+            .col-md-2 img {
+                width: 100%;
+            }
         </style>
     </head>
     <body>
