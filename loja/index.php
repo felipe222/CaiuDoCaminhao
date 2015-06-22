@@ -11,7 +11,7 @@
                 margin: 0;
             }
             header {
-                height: 200px;
+                height: 120px;
                 background: #999999;
             }
             nav {
@@ -29,16 +29,23 @@
             .col-md-2 img {
                 width: 100%;
             }
+            .col-md-4 input[type="text"] {
+                width:90%;
+                margin-top:50px;
+            }
         </style>
     </head>
     <body>
         <div class="container">
             <header class="col-md-12">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <?php require './includes/modulos/logotipo.php'; ?>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <?php require './includes/modulos/pesquisar.php'; ?>
+                </div>
+                <div class="col-md-4">
+                    <?php require './includes/modulos/carrinho.php'; ?>
                 </div>
             </header>
             <nav class="col-md-12">
