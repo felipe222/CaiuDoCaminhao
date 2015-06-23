@@ -4,28 +4,15 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css" />
         <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="css/estilo.css" type="text/css" />
         <title>Home</title>
         <style>
             /* CSS PARA TESTE */
             * {
                 margin: 0;
             }
-            header {
-                height: 120px;
-                background: #999999;
-            }
-            nav {
-                height: 50px;
-                background: #666666;
-            }
-            main {
-                min-height: 500px;
-                background: #CCCCCC;
-            }
-            footer{
-                height: 200px;
-                background: #999999;
-            }
+            
+            
             .col-md-2 img {
                 width: 100%;
             }
@@ -36,21 +23,27 @@
         </style>
     </head>
     <body>
-        <div class="container">
+
             <header class="col-md-12">
-                <div class="col-md-4">
-                    <?php require './includes/modulos/logotipo.php'; ?>
-                </div>
-                <div class="col-md-4">
-                    <?php require './includes/modulos/pesquisar.php'; ?>
-                </div>
-                <div class="col-md-4">
-                    <?php require './includes/modulos/carrinho.php'; ?>
+                <div class="container">
+                    <div class="col-md-4">
+                        <?php require './includes/modulos/logotipo.php'; ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?php require './includes/modulos/pesquisar.php'; ?>
+                    </div>
+                    <div class="col-md-4">
+                        <?php require './includes/modulos/carrinho.php'; ?>
+                    </div>
                 </div>
             </header>
+        
             <nav class="col-md-12">
-                 <?php require './includes/modulos/menu.php'; ?>
+                 <div class="container">
+                    <?php require './includes/modulos/menu.php'; ?>
+                 </div>
             </nav>
+        <div class="container">
             <main class="col-md-12">
                 <?php
                 if(isset($_GET['pagina'])) {
@@ -71,14 +64,12 @@
                 }
                 ?>
             </main>
+        </div>
             <footer class="col-md-12">
-                <div class="col-md-6">
-                    <?php require './includes/modulos/copyright.php'; ?>
-                </div>
-                <div class="col-md-6">
+                <div class="container">
                     <?php require './includes/modulos/grupo.php'; ?>
                 </div>
             </footer>
-        </div>
+        
     </body>
 </html>
