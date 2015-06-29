@@ -1,18 +1,24 @@
+<?php
+//ini_set("display_errors", "On");
+include "includes/funcoes/funcoes.php";
+$funcoes = new funcoes();
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css" />
-        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-        <link rel="stylesheet" href="css/estilo.css" type="text/css" />
-        <title>Home</title>
+        <link rel="shortcut icon" href="<?php echo $funcoes->requestUrl();?>favicon.ico" />
+        <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/bootstrap-theme.min.css" type="text/css" />
+        <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/estilo.css" type="text/css" />
+        <title>Caiu do Caminhão - Página Inicial</title>
         <style>
             /* CSS PARA TESTE */
             * {
                 margin: 0;
             }
-            
-            
+
+
             .col-md-2 img {
                 width: 100%;
             }
@@ -24,52 +30,35 @@
     </head>
     <body>
 
-            <header class="col-md-12">
-                <div class="container">
-                    <div class="col-md-4">
-                        <?php require './includes/modulos/logotipo.php'; ?>
-                    </div>
-                    <div class="col-md-4">
-                        <?php require './includes/modulos/pesquisar.php'; ?>
-                    </div>
-                    <div class="col-md-4">
-                        <?php require './includes/modulos/carrinho.php'; ?>
-                    </div>
+        <header class="col-md-12">
+            <div class="container">
+                <div class="col-md-4">
+                    <?php require $funcoes->requestModules("logotipo"); ?>
                 </div>
-            </header>
-        
-            <nav class="col-md-12">
-                 <div class="container">
-                    <?php require './includes/modulos/menu.php'; ?>
-                 </div>
-            </nav>
+                <div class="col-md-4">
+                    <?php require $funcoes->requestModules("pesquisar"); ?>
+                </div>
+                <div class="col-md-4">
+                    <?php require $funcoes->requestModules("carrinho"); ?>
+                </div>
+            </div>
+        </header>
+
+        <nav class="col-md-12">
+            <div class="container">
+                <?php require $funcoes->requestModules("menu"); ?>
+            </div>
+        </nav>
         <div class="container">
             <main class="col-md-12">
-                <?php
-                if(isset($_GET['pagina'])) {
-                    switch($_GET['pagina']) {
-                        case "produto":
-                            require './includes/paginas/produto.php';
-                            break;
-                        case "categoria":
-                            require './includes/paginas/categoria.php';
-                            break;
-                        case "carrinho":
-                            require './includes/paginas/carrinho.php';
-                            break;
-                    }
-                }
-                else {
-                    require './includes/paginas/home.php';   
-                }
-                ?>
+                <?php $funcoes->requestPage($_GET["pagina"]); ?>
             </main>
         </div>
-            <footer class="col-md-12">
-                <div class="container">
-                    <?php require './includes/modulos/grupo.php'; ?>
-                </div>
-            </footer>
-        
+        <footer class="col-md-12">
+            <div class="container">
+                <?php require $funcoes->requestModules("grupo"); ?>
+            </div>
+        </footer>
+
     </body>
 </html>

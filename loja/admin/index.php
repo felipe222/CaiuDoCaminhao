@@ -1,72 +1,61 @@
+<?php
+//ini_set("display_errors", "On");
+include "../includes/funcoes/funcoes.php";
+$funcoes = new funcoes();
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="../css/bootstrap-theme.min.css" type="text/css" />
-        <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
-        <title>Home</title>
-        <style>
+        <link rel="shortcut icon" href="<?php echo $funcoes->requestUrl();?>favicon.ico" />
+        <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/bootstrap-theme.min.css" type="text/css" />
+        <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/bootstrap.min.css" type="text/css" />        
+        <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/estilo.css" type="text/css" />
+        <title>Administrador - Caiu do Caminhão</title>
+       <style>
             /* CSS PARA TESTE */
             * {
                 margin: 0;
             }
-            header {
-                height: 200px;
-                background: #999999;
-            }
-            nav {
-                height: 50px;
-                background: #666666;
-            }
-            main {
-                min-height: 500px;
-                background: #CCCCCC;
-            }
-            footer{
-                height: 200px;
-                background: #999999;
-            }
+            
+            
             .col-md-2 img {
                 width: 100%;
+            }
+            .col-md-4 input[type="text"] {
+                width:90%;
+                margin-top:50px;
             }
         </style>
     </head>
     <body>
+        <header class="col-md-12">
+            <div class="container">
+                <div class="col-md-4">
+                    <?php require $funcoes->requestModules("logotipo"); ?>
+                </div>
+                <div class="col-md-4">
+                    <?php require $funcoes->requestModules("pesquisar"); ?>
+                </div>
+                <div class="col-md-4">
+                    <?php require $funcoes->requestModules("carrinho"); ?>
+                </div>
+            </div>
+        </header>
+        <nav class="col-md-12">                
+            <div class="container">
+                <?php require $funcoes->requestModules("menu"); ?>
+            </div>
+        </nav>
         <div class="container">
-            <header class="col-md-12">
-                <div class="col-md-6">
-                    <?php require '../includes/modulos/logotipo.php'; ?>
-                </div>
-                <div class="col-md-6">
-                    <?php require '../includes/modulos/pesquisar.php'; ?>
-                </div>
-            </header>
-            <nav class="col-md-12">
-                 <?php require '../includes/modulos/menu.php'; ?>
-            </nav>
             <main class="col-md-12">
-                <?php
-//                die(var_dump($_GET['pagina']));
-                if(isset($_GET['pagina'])) {                    
-                    switch($_GET['pagina']) {
-                        case "categoria":
-                            require './cadCategoria.php';
-                            break;
-                    }
-                }
-                else {
-                    require '../includes/paginas/home.php';   
-                }
-                ?>
+                <?php $funcoes->requestPageAdmin($_GET["pagina"]); ?>
             </main>
-            <footer class="col-md-12">
-                <div class="col-md-6">
-                    <?php require '../includes/modulos/copyright.php'; ?>
-                </div>
-                <div class="col-md-6">
-                    <?php require '../includes/modulos/grupo.php'; ?>
-                </div>
-            </footer>
         </div>
+        <footer class="col-md-12">
+            <div class="container">
+                <?php require $funcoes->requestModules("grupo"); ?>
+            </div>
+        </footer>
     </body>
 </html>

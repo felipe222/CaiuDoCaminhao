@@ -1,6 +1,6 @@
 <?php
-    require_once '../config/conexao.class.php';
-    require_once '../config/crud.class.php';
+    require_once '../conexao/conexao.php';
+    require_once '../conexao/crudGeral.php';
 
     $con = new conexao(); // instancia classe de conexao
     $con->connect(); // abre conexao com o banco
