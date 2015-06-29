@@ -1,13 +1,13 @@
 <?php
-    require_once '../config/conexao.class.php';
-    require_once '../config/crud.class.php';
+    require_once '../conexao/conexao.php';
+    require_once '../conexao/crudGeral.php';
 
     $con = new conexao();  // instancia classe de conxao
     $con->connect(); // abre conexao com o banco
 
-    $crud = new crud('produto'); // instancia classe com as operaçoes crud, passando o nome da tabela como parametro
+    $crud = new crud('categorias'); // instancia classe com as operaçoes crud, passando o nome da tabela como parametro
     $id = $_GET['id']; //pega id para exclusao caso exista
-    $crud->excluir("id = $id"); // exclui o registro com o id que foi passado
+    $crud->excluir($con->getConexao(),"id = $id"); // exclui o registro com o id que foi passado
 
     $con->disconnect(); // fecha a conexao
 

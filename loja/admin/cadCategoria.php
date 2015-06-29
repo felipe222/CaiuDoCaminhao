@@ -3,7 +3,7 @@
     require_once '../conexao/crudGeral.php';
 
     $con = new conexao(); // instancia classe de conexao
-    $con->connect(); // abre conexao com o banco
+    $con->connect(); // abre conexao com o banco    
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,8 +36,8 @@
             </thead>
             <tbody>
                 <?php
-                    $consulta = mysql_query("SELECT * FROM categorias"); // query que busca todos os dados da tabela PRODUTO
-                    while($campo = mysql_fetch_array($consulta)){ // laço de repetiçao que vai trazer todos os resultados da consulta
+                    $consulta = mysqli_query($con->getConexao(),"SELECT * FROM categorias");
+                    while($campo = mysqli_fetch_array($consulta)){ // laço de repetiçao que vai trazer todos os resultados da consulta
                 ?>
                     <tr>
                         <td>

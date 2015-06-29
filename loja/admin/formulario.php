@@ -1,28 +1,28 @@
 <?php
-    require_once '../config/conexao.class.php';
-    require_once '../config/crud.class.php';
+    require_once '../conexao/conexao.php';
+    require_once '../conexao/crudGeral.php';
 
     $con = new conexao(); // instancia classe de conxao
     $con->connect(); // abre conexao com o banco
     @$getId = $_GET['id'];  //pega id para ediçao caso exista
     if(@$getId){ //se existir recupera os dados e tras os campos preenchidos
-        $consulta = mysql_query("SELECT * FROM categorias WHERE id = + $getId");
-        $campo = mysql_fetch_array($consulta);
+        $consulta = mysqli_query($con->getConexao(),"SELECT * FROM categorias WHERE id = + $getId");
+        $campo = mysqli_fetch_array($consulta);
     }
     
     if(isset ($_POST['cadastrar'])){  // caso nao seja passado o id via GET cadastra 
         $nome = $_POST['nome'];  //pega o elemento com o pelo NAME 
         $descricao = $_POST['descricao']; //pega o elemento com o pelo NAME 
         $crud = new crud('categorias');  // instancia classe com as operaçoes crud, passando o nome da tabela como parametro
-        $crud->inserir("nome,descricao", "'$nome','$descricao'"); // utiliza a funçao INSERIR da classe crud
+        $crud->inserir($con->getConexao(),"nome,descricao", "'$nome','$descricao'"); // utiliza a funçao INSERIR da classe crud
         header("Location: index.php"); // redireciona para a listagem
     }
 
     if(isset ($_POST['editar'])){ // caso  seja passado o id via GET edita 
         $nome = $_POST['nome']; //pega o elemento com o pelo NAME
         $descricao = $_POST['descricao']; //pega o elemento com o pelo NAME
-        $crud = new crud('cateagorias'); // instancia classe com as operaçoes crud, passando o nome da tabela como parametro
-        $crud->atualizar("nome='$nome',descricao='$descricao'", "id='$getId'"); // utiliza a funçao ATUALIZAR da classe crud
+        $crud = new crud('categorias'); // instancia classe com as operaçoes crud, passando o nome da tabela como parametro
+        $crud->atualizar($con->getConexao(),"nome='$nome',descricao='$descricao'", "id='$getId'"); // utiliza a funçao ATUALIZAR da classe crud
         header("Location: index.php"); // redireciona para a listagem
     }
 
