@@ -7,18 +7,23 @@ $funcoes = new funcoes();
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="shortcut icon" href="<?php echo $funcoes->requestUrl();?>favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <link rel="shortcut icon" href="<?php echo $funcoes->requestUrl(); ?>favicon.ico" />
         <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/bootstrap-theme.min.css" type="text/css" />
         <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/bootstrap.min.css" type="text/css" />        
         <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/estilo.css" type="text/css" />
         <title>Administrador - Caiu do Caminhão</title>
-       <style>
+        <style>
             /* CSS PARA TESTE */
             * {
                 margin: 0;
             }
-            
-            
+
+
             .col-md-2 img {
                 width: 100%;
             }
@@ -35,7 +40,7 @@ $funcoes = new funcoes();
                     <?php require $funcoes->requestModules("logotipo"); ?>
                 </div>
                 <div class="col-md-4">
-                    <?php require $funcoes->requestModules("pesquisar"); ?>
+                    <?php // require $funcoes->requestModules("pesquisar"); ?>
                 </div>
                 <div class="col-md-4">
                     <?php require $funcoes->requestModules("carrinho"); ?>
@@ -44,7 +49,7 @@ $funcoes = new funcoes();
         </header>
         <nav class="col-md-12">                
             <div class="container">
-                <?php require $funcoes->requestModules("menu"); ?>
+                <?php require $funcoes->requestModules("menuAdmin"); ?>
             </div>
         </nav>
         <div class="container">

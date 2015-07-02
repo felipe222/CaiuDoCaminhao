@@ -23,18 +23,13 @@
         $descricao = $_POST['descricao']; //pega o elemento com o pelo NAME
         $crud = new crud('categorias'); // instancia classe com as operaçoes crud, passando o nome da tabela como parametro
         $crud->atualizar($con->getConexao(),"nome='$nome',descricao='$descricao'", "id='$getId'"); // utiliza a funçao ATUALIZAR da classe crud
-        header("Location: index.php"); // redireciona para a listagem
+//        header("Location: index.php"); // redireciona para a listagem
     }
 
 ?>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <form action="" method="post"><!--   formulario carrega a si mesmo com o action vazio  -->
+
+<form action="" method="post" class="formulario" style="display: none;"><!--   formulario carrega a si mesmo com o action vazio  -->
             
             <label>Nome:</label>
             <input type="text" name="nome" value="<?php echo @$campo['nome']; // trazendo campo preenchido caso esteja no modo de ediçao ?>" />
@@ -52,6 +47,5 @@
                 <input type="submit" name="editar" value="Editar" />    
             <?php } ?>
         </form>
-    </body>
-</html>
+
 <?php $con->disconnect(); // fecha conexao com o banco ?>

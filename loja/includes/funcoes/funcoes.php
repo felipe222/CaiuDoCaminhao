@@ -32,6 +32,8 @@ class funcoes {
             case "categoria":
                 require $this->getCaminhoAbsoluto(). '/admin/cadCategoria.php';
                 break;
+            default : 
+                require $this->getCaminhoAbsoluto(). '/admin/admin.php';
         }
     }
 

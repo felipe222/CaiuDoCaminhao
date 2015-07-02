@@ -27,20 +27,20 @@ class crud {
 
     // funçao de ediçao, campos com seus respectivos valores e o campo id que define a linha a ser editada como parametros
     public function atualizar($getConexao,$camposvalores, $where = NULL) {
-        $con = new conexao();
+//        $con = new conexao();
         if ($where) {
             $this->sql_upd = "UPDATE  " . $this->tabela . " SET $camposvalores WHERE $where";
         } else {
             $this->sql_upd = "UPDATE  " . $this->tabela . " SET $camposvalores";
         }
 
-        if (!$this->upd = mysqli_query($con->getConexao(), $this->sql_upd)) {
+        if (!$this->upd = mysqli_query($getConexao, $this->sql_upd)) {
             die("<center>Erro na atualização " . "<br>Linha: " . __LINE__ . "<br>" . mysqli_error() . "<br>
 				<a href='index.php'>Voltar ao Menu</a></center>");
         } else {
             print "<center>Registro Atualizado com Sucesso!<br><a href='index.php'>Voltar ao Menu</a></center>";
         }
-        $con->disconnect();
+//        $con->disconnect();
     }
 
     // funçao de exclusao, campo que define a linha a ser editada como parametro		
