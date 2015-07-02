@@ -8,10 +8,35 @@ $funcoes = new funcoes();
     <head>
         <meta charset="utf-8">
         <link rel="shortcut icon" href="<?php echo $funcoes->requestUrl();?>favicon.ico" />
+        <script src="<?php echo $funcoes->requestUrl();?>js/jquery.min.js" > </script>
         <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/bootstrap-theme.min.css" type="text/css" />
         <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/bootstrap.min.css" type="text/css" />
         <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/estilo.css" type="text/css" />
         <title>Caiu do Caminhão - Página Inicial</title>
+        <script type="text/javascript">              
+            var ajax = function(){
+				//buscar valor digitado
+                var busca = $('#busProduto').val();
+                
+				$.ajax({                   
+                   url: 'requisicao.php?',
+                   type: 'GET',
+                   data: "param="+busca,
+                   dataType: 'json',
+                            
+                }).done(function(data){
+					var response = [];
+					response = data;
+					document.getElementById("lista").innerHTML = "";
+					
+					for(i = 0; i < response.length; i++){					
+
+                                                document.getElementById("lista").innerHTML += '<div><a href="index.php?pagina=produto&id=' + response[i].id +'"><img style="width:50px;" src="' + response[i].foto + '" />' + response[i].nome +'</a></div>';				
+					}					
+                });               
+			};                    
+        </script> 
+        
         <style>
             /* CSS PARA TESTE */
             * {

@@ -2,10 +2,12 @@ header {
     height: 120px;
     background: #90C748;
     padding-top: 15px;
+    z-index:999;
 }
 
 nav {
     height: 32px;
+    z-index:1;
     background: #2B2B2B;
 }
 
