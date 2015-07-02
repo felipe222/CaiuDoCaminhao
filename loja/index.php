@@ -51,7 +51,10 @@ $funcoes = new funcoes();
         </nav>
         <div class="container">
             <main class="col-md-12">
-                <?php $funcoes->requestPage($_GET["pagina"]); ?>
+               <?php 
+                    if(!isset($_GET["pagina"])) $_GET["pagina"] = null;
+                    $funcoes->requestPage($_GET["pagina"]); 
+               ?>
             </main>
         </div>
         <footer class="col-md-12">

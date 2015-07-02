@@ -24,6 +24,9 @@ class funcoes {
             case "carrinho":
                 require $this->getCaminhoAbsoluto(). 'includes/paginas/carrinho.php';
                 break;
+            default:
+                require $this->getCaminhoAbsoluto(). 'includes/paginas/home.php';
+                
         }
     }
 
