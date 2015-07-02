@@ -3,14 +3,14 @@
 class funcoes {
 
     public function getPastaProjeto() {
-        return "projeto/CaiuDoCaminhao/loja/";
+        return "CaiuDoCaminhao/loja/";
     }
     public function getCaminhoAbsoluto() {
-        return $_SERVER[DOCUMENT_ROOT]."projeto/CaiuDoCaminhao/loja/";
+        return $_SERVER['DOCUMENT_ROOT']."CaiuDoCaminhao/loja/";
     }
 
     function requestUrl() {
-        return "http://" . $_SERVER[HTTP_HOST] . "/" . $this->getPastaProjeto();
+        return "http://" . $_SERVER['HTTP_HOST'] . "/" . $this->getPastaProjeto();
     }
 
     function requestPage($pagina) {
@@ -38,7 +38,7 @@ class funcoes {
     }
 
     function requestModules($nomeArquivo) {
-        return $_SERVER[DOCUMENT_ROOT] . "" . $this->getPastaProjeto() . "includes/modulos/" . $nomeArquivo . ".php";
+        return $_SERVER['DOCUMENT_ROOT'] . "" . $this->getPastaProjeto() . "includes/modulos/" . $nomeArquivo . ".php";
     }
 
 }
